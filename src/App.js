@@ -6,7 +6,8 @@ function App() {
 
   return (
     <div className="App">
-      <Home title="Hello World 2"/>
+      <h1>Cards</h1>
+      <Home/>
     </div>
   );
 }

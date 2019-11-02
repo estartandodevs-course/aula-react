@@ -1,5 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 .App {
-    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
     min-height: 100px;
+    h1{
+        border-bottom: 2px dashed #2ECC71;
+        color:#2C3E50;
+        margin-bottom: 5px; 
+    }
 }

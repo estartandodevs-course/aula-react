@@ -1,0 +1,30 @@
+.Cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 300px;
+    border: 2px solid  #2ECC71;
+    border-radius: 50px;
+    margin: 5px;
+    img{
+        width:150px;
+        border-radius: 70px;
+        box-shadow: 2px 2px 2px 5px #7DCEA0;
+        margin:5px;
+    }
+    h2{
+        border-bottom: 2px solid #2ECC71;
+        color: #2C3E50;
+        padding:5px;
+        margin: 3px;
+    }
+    h3{
+        border-bottom: 2px solid #2ECC71;
+        color: #2C3E50;
+        padding:5px;
+        margin: 3px;
+        font-size: 18px;
+    }
+}

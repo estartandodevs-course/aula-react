@@ -4,12 +4,13 @@ import  './style.scss';
 
 export default function Card(props) {
 
-    const { avatar, first_name } = props
+    const { avatar, first_name, last_name, email} = props
 
   return (
-    <div>
+    <div className="Cards">
         <img src={avatar} alt=""/>
-        <h3>{first_name}</h3>
+        <h2>{first_name +" "+ last_name}</h2>
+        <h3>{email}</h3>
     </div>
   );
 }
