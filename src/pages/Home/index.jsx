@@ -30,6 +30,14 @@ export default class Home extends Component {
             console.log(err)
         })
     }
+
+
+     getDetail = (id) => {
+        fetch(`https://reqres.in/api/users/${id}`).then(res => res.json()).then(res => {
+          console.log(res.data)
+        })
+    }
+
     render() {
 
 
@@ -49,6 +57,7 @@ export default class Home extends Component {
                                     first_name={user.first_name}
                                     avatar={user.avatar}
                                     last_name={user.last_name}
+                                    action={ () => this.getDetail(user.id) }
                                 />
                             })}
                         </div>
