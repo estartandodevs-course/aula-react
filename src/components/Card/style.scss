@@ -3,10 +3,26 @@
     border: 2px solid black;
     border-radius: 10px;
     height: 100;
-    width: 150px;
+    min-width: 150px;
     margin: 10px;
     padding: 10px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.lightCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100;
+    min-width: 150px;
+    border-radius: 10px;    
+    margin: 10px;
+    padding: 10px;    
+    background-color: #fff;
+    color: #000;
+    img{
+        border-radius: 50%;;
+    }
 }
