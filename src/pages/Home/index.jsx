@@ -4,7 +4,6 @@ import Card from "../../components/Card";
 import Loading from '../../components/Loading';
 import Modal from '../../components/Modal/index'
 
-
 //Componente de classe
 export default class Home extends Component {
 
@@ -12,16 +11,27 @@ export default class Home extends Component {
         users: [],
         loading: true,
         errorMessage: "",
-        user:"",
-        modalWin: false
+        user:{},
+        modalWin: false,
+        page: Number ,
+        totalPages: Number
     }
 
     componentDidMount() {
         fetch("https://reqres.in/api/users").then(res => res.json()).then(res => {
+
+            console.log(res)
+            console.log(res.total_pages)
+
             this.setState({
                 users: res.data,
-                loading: false
+                loading: false,
+                page: res.page,
+                totalPages: res.total_pages
             })
+
+            this.licreate(this.state.totalPages)           
+
         }).catch(err => {
             this.setState(
                 {
@@ -44,14 +54,51 @@ export default class Home extends Component {
         })
     }
 
+    licreate(tp){
+        let ul = document.createElement('ul')
+        console.log(tp)
+        for(let i= 1; i<=tp ; i++){
+            let li = document.createElement('li')
+            let text = document.createTextNode(i)
+            li.appendChild(text)
+            ul.appendChild(li)
+        }
+        document.querySelector('#pag').appendChild(ul)
+
+        let tli = document.querySelectorAll('li')
+
+        tli.forEach(li=>{
+            li.addEventListener('click', ()=> this.nexPage(parseInt(li.textContent)))
+        })
+    }
+
+    nexPage(next){
+        this.setState({loading: true})
+        setTimeout(()=>{
+            fetch(`https://reqres.in/api/users?page=${next}`)
+            .then(res => res.json())
+            .then(data=> {
+                console.log(data)
+                this.setState({
+                    users: data.data,
+                    loading: false,
+                    totalPages: data.total_pages
+                })
+                this.licreate(data.total_pages)
+            })
+        },1000)
+    }
+
     render() {
         const { users, loading, errorMessage, modalWin, user} = this.state;
 
         return (
             loading ? ( 
-                <Loading/>
+                <div className="loading">
+                    <Loading/>
+                </div>
             ): (
-                <div>
+                <div className="container">
                     {/* <h1>{this.props.title}</h1> */}
                     <div className="home">
                         {users.map(user => {
@@ -62,14 +109,22 @@ export default class Home extends Component {
                                 action={ () => this.getDetail(user.id) }
                                 buttonValue = {'Ver mais'}
                             />
+
+                            
                         })}
                     </div>
                     { errorMessage && ( <p> ERROR -> {errorMessage} </p>)}
-                    { this.state.modalWin && <Modal buttonValue={'Close'} user = {user} action ={()=>{this.setState({modalWin: !modalWin})}} />}
-                </div>
-                
+
+                    { modalWin && <Modal 
+                                    buttonValue={'Close'} 
+                                    user = {user} 
+                                    action ={()=>{this.setState({modalWin: !modalWin})}}
+                                />
+                    }
+
+                    <div id="pag"></div>
+                </div>                
             )
         )
-
     }
 }

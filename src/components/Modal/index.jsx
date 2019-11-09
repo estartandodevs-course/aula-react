@@ -7,7 +7,8 @@ export default class Modal extends Component{
         const {user, action, buttonValue} = this.props
 
         return (
-            <div className='modalContainer'>
+           <div>
+                <div className='modalContainer'>
                 <Card 
                     key={user.id}
                     first_name={user.first_name} 
@@ -18,7 +19,10 @@ export default class Modal extends Component{
                     action={action}
                     buttonValue = {buttonValue}
                 />
-            </div>
+                </div>
+
+                <div className="bgModal"></div>
+           </div>
         )  
     }  
 }

@@ -1,7 +1,33 @@
-.home{
+*{margin:0; padding: 0}
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    .home{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 50vw;
+    }
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pag{
+    ul{
+        display: flex;
+        list-style: none;    
+        li{
+            background-color: #ffffff;
+            margin: 1px;
+            padding: 3px;
+            cursor: pointer
+        }
+    }
 }
