@@ -9,7 +9,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    transition: .1s;
+    &:hover{
+        transform: scale(1.05);
+    }
 }
+
 .lightCard{
     display: flex;
     flex-direction: column;

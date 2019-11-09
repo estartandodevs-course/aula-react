@@ -4,11 +4,11 @@ import Card from "../../components/Card";
 
 export default class Modal extends Component{ 
     render(){
-        const {user, action, buttonValue} = this.props
+        const {user, action, buttonValue, show} = this.props
 
         return (
            <div>
-                <div className='modalContainer'>
+                <div className='modalContainer' style={{left: show ? 0 : "100vw"}}>
                 <Card 
                     key={user.id}
                     first_name={user.first_name} 
@@ -20,8 +20,6 @@ export default class Modal extends Component{
                     buttonValue = {buttonValue}
                 />
                 </div>
-
-                <div className="bgModal"></div>
            </div>
         )  
     }  

@@ -89,6 +89,10 @@ export default class Home extends Component {
         },1000)
     }
 
+    toggleModal = () => {
+        this.setState({modalWin: !this.state.modalWin})
+    }
+
     render() {
         const { users, loading, errorMessage, modalWin, user} = this.state;
 
@@ -115,12 +119,12 @@ export default class Home extends Component {
                     </div>
                     { errorMessage && ( <p> ERROR -> {errorMessage} </p>)}
 
-                    { modalWin && <Modal 
+                    <Modal 
+                                    show={modalWin}
                                     buttonValue={'Close'} 
                                     user = {user} 
-                                    action ={()=>{this.setState({modalWin: !modalWin})}}
+                                    action ={this.toggleModal}
                                 />
-                    }
 
                     <div id="pag"></div>
                 </div>                
